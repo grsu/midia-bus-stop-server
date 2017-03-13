@@ -22,9 +22,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', (req, res) => {
-  res.json({ hello: 'world' });
-});
 app.use('/users', users);
 
 /*
