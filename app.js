@@ -27,6 +27,13 @@ app.use('/', (req, res) => {
 });
 app.use('/users', users);
 
+/*
+
+/nearest-bus-stop?lat=:lat&long=:long
+/routes/:id
+
+*/
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
