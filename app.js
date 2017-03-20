@@ -24,26 +24,38 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/users', users);
 
+const routes = [
+  {
+    name: '5',
+    slug: 'bus-5'
+  },
+  {
+    name: '26',
+    slug: 'bus-26'
+  },
+  {
+    name: '15э',
+    slug: 'bus-15e'
+  }
+];
+
 app.get('/nearest-bus-stop', (req, res) => {
   res.json({
     name: 'Парк Жилибера',
-    routes: [
-      {
-        name: '5',
-        slug: 'bus-5'
-      },
-      {
-        name: '26',
-        slug: 'bus-26'
-      },
-      {
-        name: '15э',
-        slug: 'bus-15e'
-      }
-    ]
+    routes: routes,
   });
 });
-app.get('/routes/:slug', () => {});
+
+app.get('/routes/:slug', (req, res) => {
+  const slug = req.params.slug;
+  const route = routes.find((r) => r.slug === slug);
+
+  res.json(Object.assign(
+    {},
+    route,
+    { path: 'to-be-designed' }
+  ));
+});
 
 /*
 
